@@ -108,3 +108,38 @@ cantidad_depositos,fecha_deposito
 (2345678901234567,2026-11-30,234)
 (1234567890123456,2025-12-31,123)
 
+
+Table Sucursal {
+    id_Sucursal int [pk]
+    nombre_Sucursal varchar(100) [not null]
+    direccion varchar(50) [not null]
+    
+}
+id_Sucursal,nombre_Sucursal,direccion
+
+("Sucursal" "Central,Av Principal 123")
+("Sucursal" "Norte,Calle 45 No 10")
+("Sucursal" "Sur,Carrera 12 #34")
+("Sucursal" "Este,Plaza Mayor 5")
+("Sucursal" "Oeste,Paseo Colon 200")
+("Sucursal" "Centro,Calle Real 77")
+("Sucursal" "Alameda,Avenida Libertad 34")
+("Sucursal" "Las Palmas,Calle 8 No 22")
+("Sucursal" "Monteverde,Calle Larga 99")
+("Sucursal" "La Paz,Carrera 3 No 56")
+("Sucursal" "Victoria,Avenida 9 No 100")
+("Sucursal" "San Jose,Calle 2 #12")
+("Sucursal" "Santa Maria,Avenida Central 45")
+("Sucursal" "Los Olivos,Calle Robles 67")
+("Sucursal" "El Prado,Paseo del Parque 10")
+("Sucursal" "Rio Grande,Calle Rio 3")
+("Sucursal" "Laguna,Carrera Laguna 8")
+("Sucursal" "Primavera,Avenida Flores 21")
+("Sucursal" "Feria,Calle Mercado 4")
+("Sucursal" "Libertad,Plaza Independencia 1")
+("Sucursal" "Horizonte,Calle 100 No 5")
+("Sucursal" "Sol,Carrera 77 #9")
+("Sucursal" "Estrella,Avenida 55 No 11")
+("Sucursal" "Mirador,Calle Alta 88")
+("Sucursal" "Puente,Paseo Nuevo 2")
+

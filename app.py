@@ -19,38 +19,38 @@ def init_db():
     
     # Crear tabla de usuarios de ejemplo
     cursor.execute('''
-        CREATE TABLE IF NOT EXISTS usuarios (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            nombre TEXT NOT NULL,
-            email TEXT UNIQUE NOT NULL,
+        CREATE TABLE IF NOT EXISTS Sucursal (
+            id_Sucursal INTEGER PRIMARY KEY AUTOINCREMENT,
+            nombre_Sucursal TEXT NOT NULL,
+            direccion TEXT UNIQUE NOT NULL,
             edad INTEGER,
             fecha_registro DATE DEFAULT CURRENT_DATE
         )
     ''')
     
-    # Crear tabla de productos de ejemplo
-    cursor.execute('''
-        CREATE TABLE IF NOT EXISTS productos (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            nombre TEXT NOT NULL,
-            precio REAL NOT NULL,
-            categoria TEXT,
-            stock INTEGER DEFAULT 0
-        )
-    ''')
+    # # Crear tabla de productos de ejemplo
+    # cursor.execute('''
+    #     CREATE TABLE IF NOT EXISTS productos (
+    #         id INTEGER PRIMARY KEY AUTOINCREMENT,
+    #         nombre TEXT NOT NULL,
+    #         precio REAL NOT NULL,
+    #         categoria TEXT,
+    #         stock INTEGER DEFAULT 0
+    #     )
+    # ''')
     
-    # Crear tabla de ventas de ejemplo
-    cursor.execute('''
-        CREATE TABLE IF NOT EXISTS ventas (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            usuario_id INTEGER,
-            producto_id INTEGER,
-            cantidad INTEGER,
-            fecha_venta DATETIME DEFAULT CURRENT_TIMESTAMP,
-            FOREIGN KEY (usuario_id) REFERENCES usuarios (id),
-            FOREIGN KEY (producto_id) REFERENCES productos (id)
-        )
-    ''')
+    # # Crear tabla de ventas de ejemplo
+    # cursor.execute('''
+    #     CREATE TABLE IF NOT EXISTS ventas (
+    #         id INTEGER PRIMARY KEY AUTOINCREMENT,
+    #         usuario_id INTEGER,
+    #         producto_id INTEGER,
+    #         cantidad INTEGER,
+    #         fecha_venta DATETIME DEFAULT CURRENT_TIMESTAMP,
+    #         FOREIGN KEY (usuario_id) REFERENCES usuarios (id),
+    #         FOREIGN KEY (producto_id) REFERENCES productos (id)
+    #     )
+    # ''')
     
     # Insertar datos de ejemplo si no existen
     cursor.execute('SELECT COUNT(*) FROM usuarios')
