@@ -74,7 +74,7 @@ numero_tarjeta,fecha_expiracion,ccv
 (1718192021222324,2049-12-31,171)
 (1819202122232425,2050-11-30,181)
 
-Table deposito {
+Table transacción {
     id_deposito int [pk]
     id_cuenta int [ref: > id_cuenta.cuenta]
     cantidad_depositos int [not null]
