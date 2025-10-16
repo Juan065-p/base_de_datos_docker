@@ -7,6 +7,7 @@ Table sucursal {
     id_sucursal int [pk]
     nombre_sucursal varchar(100) [not null]
     direccion varchar(50) [not null]
+    fecha_apertura date
 }
 
 Table usuario {

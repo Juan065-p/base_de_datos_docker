@@ -56,31 +56,52 @@ def init_db():
     cursor.execute('SELECT COUNT(*) FROM usuarios')
     if cursor.fetchone()[0] == 0:
         usuarios_ejemplo = [
-            ('Juan Pérez', 'juan@email.com', 28),
-            ('María García', 'maria@email.com', 34),
-            ('Carlos López', 'carlos@email.com', 22),
-            ('Ana Martín', 'ana@email.com', 31),
-            ('Luis Rodríguez', 'luis@email.com', 26)
+            ("Sucursal Central","Av. Principal 123")
+            ("Sucursal Norte","Calle Secundaria 456")
+            ("Sucursal Sur","Boulevard Tercero 789")
+            ("Sucursal Este","Avenida Cuarto 101")
+            ("Sucursal Oeste","Calle Quinta 202")
+            ("Sucursal Centro","Calle Sexta 303")
+            ("Sucursal Internacional","Avenida Séptima 404")
+            ("Sucursal Local","Calle Octava 505")
+            ("Sucursal Urbana","Boulevard Noveno 606")
+            ("Sucursal Rural","Calle Décima 707")
+            ("Sucursal Metropolitana","Avenida Once 808")
+            ("Sucursal Provincial","Calle Doce 909")
+            ("Sucursal Regional","Boulevard Trece 111")
+            ("Sucursal Nacional","Avenida Catorce 222")
+            ("Sucursal Internacional II","Calle Quince 333")
+            ("Sucursal Local II","Boulevard Dieciséis 444")
+            ("Sucursal Urbana II","Avenida Diecisiete 555")
+            ("Sucursal Rural II","Calle Dieciocho 666")
+            ("Sucursal Metropolitana II","Boulevard Diecinueve 777")
+            ("Sucursal Provincial II","Avenida Veinte 888")
+            ("Sucursal Regional II","Calle Veintiuno 999")
+            ("Sucursal Nacional II","Boulevard Veintidós 121")
+            ("Sucursal Central III","Avenida Veintitrés 232")
+            ("Sucursal Norte III","Calle Veinticuatro 343")
+            ("Sucursal Sur III","Boulevard Veinticinco 454")
+
         ]
         cursor.executemany('INSERT INTO usuarios (nombre, email, edad) VALUES (?, ?, ?)', usuarios_ejemplo)
         
-        productos_ejemplo = [
-            ('Laptop', 999.99, 'Electrónicos', 15),
-            ('Mouse', 25.50, 'Accesorios', 50),
-            ('Teclado', 45.00, 'Accesorios', 30),
-            ('Monitor', 299.99, 'Electrónicos', 20),
-            ('Silla Gaming', 199.99, 'Muebles', 8)
-        ]
-        cursor.executemany('INSERT INTO productos (nombre, precio, categoria, stock) VALUES (?, ?, ?, ?)', productos_ejemplo)
+        # productos_ejemplo = [
+        #     ('Laptop', 999.99, 'Electrónicos', 15),
+        #     ('Mouse', 25.50, 'Accesorios', 50),
+        #     ('Teclado', 45.00, 'Accesorios', 30),
+        #     ('Monitor', 299.99, 'Electrónicos', 20),
+        #     ('Silla Gaming', 199.99, 'Muebles', 8)
+        # ]
+        # cursor.executemany('INSERT INTO productos (nombre, precio, categoria, stock) VALUES (?, ?, ?, ?)', productos_ejemplo)
         
-        ventas_ejemplo = [
-            (1, 1, 1),
-            (2, 2, 2),
-            (1, 3, 1),
-            (3, 1, 1),
-            (4, 4, 1)
-        ]
-        cursor.executemany('INSERT INTO ventas (usuario_id, producto_id, cantidad) VALUES (?, ?, ?)', ventas_ejemplo)
+        # ventas_ejemplo = [
+        #     (1, 1, 1),
+        #     (2, 2, 2),
+        #     (1, 3, 1),
+        #     (3, 1, 1),
+        #     (4, 4, 1)
+        # ]
+        # cursor.executemany('INSERT INTO ventas (usuario_id, producto_id, cantidad) VALUES (?, ?, ?)', ventas_ejemplo)
     
     conn.commit()
     conn.close()
