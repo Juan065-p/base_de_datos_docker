@@ -23,7 +23,6 @@ def init_db():
             id_Sucursal INTEGER PRIMARY KEY AUTOINCREMENT,
             nombre_Sucursal TEXT NOT NULL,
             direccion TEXT UNIQUE NOT NULL,
-            edad INTEGER,
             fecha_registro DATE DEFAULT CURRENT_DATE
         )
     ''')
@@ -53,7 +52,7 @@ def init_db():
     # ''')
     
     # Insertar datos de ejemplo si no existen
-    cursor.execute('SELECT COUNT(*) FROM usuarios')
+    cursor.execute('SELECT COUNT(*) FROM Sucursal')
     if cursor.fetchone()[0] == 0:
         usuarios_ejemplo = [
             ("Sucursal Central","Av. Principal 123")
@@ -83,7 +82,7 @@ def init_db():
             ("Sucursal Sur III","Boulevard Veinticinco 454")
 
         ]
-        cursor.executemany('INSERT INTO usuarios (nombre, email, edad) VALUES (?, ?, ?)', usuarios_ejemplo)
+        cursor.executemany('INSERT INTO Sucursal (nombre_Sucursal,direccion) VALUES (?, ?)', usuarios_ejemplo)
         
         # productos_ejemplo = [
         #     ('Laptop', 999.99, 'Electrónicos', 15),
@@ -180,7 +179,7 @@ def get_examples():
     examples = [
         {
             "title": "Listar todos los usuarios",
-            "query": "SELECT * FROM usuarios;"
+            "query": "SELECT * FROM sucursal;"
         },
         {
             "title": "Productos con precio mayor a 100",
@@ -188,10 +187,10 @@ def get_examples():
         },
         {
             "title": "Contar usuarios por edad",
-            "query": "SELECT edad, COUNT(*) as cantidad FROM usuarios GROUP BY edad ORDER BY edad;"
+            "query": "SELECT edad, COUNT(*) as cantidad FROM sucursal GROUP BY edad ORDER BY edad;"
         },
         {
-            "title": "Ventas con información de usuarios y productos",
+            "title": "Ventas con información de sucursal y productos",
             "query": """SELECT 
                 v.id as venta_id,
                 u.nombre as usuario,
