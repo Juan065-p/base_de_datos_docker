@@ -55,30 +55,30 @@ def init_db():
     cursor.execute('SELECT COUNT(*) FROM Sucursal')
     if cursor.fetchone()[0] == 0:
         usuarios_ejemplo = [
-            ("Sucursal Central","Av. Principal 123")
-            ("Sucursal Norte","Calle Secundaria 456")
-            ("Sucursal Sur","Boulevard Tercero 789")
-            ("Sucursal Este","Avenida Cuarto 101")
-            ("Sucursal Oeste","Calle Quinta 202")
-            ("Sucursal Centro","Calle Sexta 303")
-            ("Sucursal Internacional","Avenida Séptima 404")
-            ("Sucursal Local","Calle Octava 505")
-            ("Sucursal Urbana","Boulevard Noveno 606")
-            ("Sucursal Rural","Calle Décima 707")
-            ("Sucursal Metropolitana","Avenida Once 808")
-            ("Sucursal Provincial","Calle Doce 909")
-            ("Sucursal Regional","Boulevard Trece 111")
-            ("Sucursal Nacional","Avenida Catorce 222")
-            ("Sucursal Internacional II","Calle Quince 333")
-            ("Sucursal Local II","Boulevard Dieciséis 444")
-            ("Sucursal Urbana II","Avenida Diecisiete 555")
-            ("Sucursal Rural II","Calle Dieciocho 666")
-            ("Sucursal Metropolitana II","Boulevard Diecinueve 777")
-            ("Sucursal Provincial II","Avenida Veinte 888")
-            ("Sucursal Regional II","Calle Veintiuno 999")
-            ("Sucursal Nacional II","Boulevard Veintidós 121")
-            ("Sucursal Central III","Avenida Veintitrés 232")
-            ("Sucursal Norte III","Calle Veinticuatro 343")
+            ("Sucursal Central","Av. Principal 123"),
+            ("Sucursal Norte","Calle Secundaria 456"),
+            ("Sucursal Sur","Boulevard Tercero 789"),
+            ("Sucursal Este","Avenida Cuarto 101"),
+            ("Sucursal Oeste","Calle Quinta 202"),
+            ("Sucursal Centro","Calle Sexta 303"),
+            ("Sucursal Internacional","Avenida Séptima 404"),
+            ("Sucursal Local","Calle Octava 505"),
+            ("Sucursal Urbana","Boulevard Noveno 606"),
+            ("Sucursal Rural","Calle Décima 707"),
+            ("Sucursal Metropolitana","Avenida Once 808"),
+            ("Sucursal Provincial","Calle Doce 909"),
+            ("Sucursal Regional","Boulevard Trece 111"),
+            ("Sucursal Nacional","Avenida Catorce 222"),
+            ("Sucursal Internacional II","Calle Quince 333"),
+            ("Sucursal Local II","Boulevard Dieciséis 444"),
+            ("Sucursal Urbana II","Avenida Diecisiete 555"),
+            ("Sucursal Rural II","Calle Dieciocho 666"),
+            ("Sucursal Metropolitana II","Boulevard Diecinueve 777"),
+            ("Sucursal Provincial II","Avenida Veinte 888"),
+            ("Sucursal Regional II","Calle Veintiuno 999"),
+            ("Sucursal Nacional II","Boulevard Veintidós 121"),
+            ("Sucursal Central III","Avenida Veintitrés 232"),
+            ("Sucursal Norte III","Calle Veinticuatro 343"),
             ("Sucursal Sur III","Boulevard Veinticinco 454")
 
         ]
@@ -190,7 +190,7 @@ def get_examples():
             "query": "SELECT edad, COUNT(*) as cantidad FROM sucursal GROUP BY edad ORDER BY edad;"
         },
         {
-            "title": "Ventas con información de sucursal y productos",
+            "title": "Ventas con información de usuarios y productos",
             "query": """SELECT 
                 v.id as venta_id,
                 u.nombre as usuario,
