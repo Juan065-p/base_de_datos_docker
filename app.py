@@ -27,29 +27,24 @@ def init_db():
         )
     ''')
     
-    # # Crear tabla de productos de ejemplo
-    # cursor.execute('''
-    #     CREATE TABLE IF NOT EXISTS productos (
-    #         id INTEGER PRIMARY KEY AUTOINCREMENT,
-    #         nombre TEXT NOT NULL,
-    #         precio REAL NOT NULL,
-    #         categoria TEXT,
-    #         stock INTEGER DEFAULT 0
-    #     )
-    # ''')
+    # Crear tabla de retiros
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS retiros (
+            id_retiro INTEGER PRIMARY KEY AUTOINCREMENT,
+            cantidad_retiros INTEGER NOT NULL,
+            fecha_retiro DATE DEFAULT CURRENT_DATE
+        )
+    ''')
     
-    # # Crear tabla de ventas de ejemplo
-    # cursor.execute('''
-    #     CREATE TABLE IF NOT EXISTS ventas (
-    #         id INTEGER PRIMARY KEY AUTOINCREMENT,
-    #         usuario_id INTEGER,
-    #         producto_id INTEGER,
-    #         cantidad INTEGER,
-    #         fecha_venta DATETIME DEFAULT CURRENT_TIMESTAMP,
-    #         FOREIGN KEY (usuario_id) REFERENCES usuarios (id),
-    #         FOREIGN KEY (producto_id) REFERENCES productos (id)
-    #     )
-    # ''')
+    # # Crear tabla de transaccion
+    cursor.execute('''
+         CREATE TABLE IF NOT EXISTS transaccion (
+             id_deposito INTEGER PRIMARY KEY AUTOINCREMENT,
+             cantidad_deposito INTEGER,
+             monto_ingreso REAL,
+             fecha_deposito DATETIME DEFAULT CURRENT_TIMESTAMP
+         )
+    ''')
     
     # Insertar datos de ejemplo si no existen
     cursor.execute('SELECT COUNT(*) FROM Sucursal')
@@ -84,23 +79,63 @@ def init_db():
         ]
         cursor.executemany('INSERT INTO Sucursal (nombre_Sucursal,direccion) VALUES (?, ?)', usuarios_ejemplo)
         
-        # productos_ejemplo = [
-        #     ('Laptop', 999.99, 'Electrónicos', 15),
-        #     ('Mouse', 25.50, 'Accesorios', 50),
-        #     ('Teclado', 45.00, 'Accesorios', 30),
-        #     ('Monitor', 299.99, 'Electrónicos', 20),
-        #     ('Silla Gaming', 199.99, 'Muebles', 8)
-        # ]
-        # cursor.executemany('INSERT INTO productos (nombre, precio, categoria, stock) VALUES (?, ?, ?, ?)', productos_ejemplo)
+        retiros_ejemplo = [
+            (5000,),
+            (5100,),
+            (5200,),
+            (5300,),
+            (5400,),
+            (5500,),
+            (5600,),
+            (5700,),
+            (5800,),
+            (5900,),
+            (6000,),
+            (6100,),
+            (6200,),
+            (6300,),
+            (6400,),
+            (6500,),
+            (6600,),
+            (6700,),
+            (6800,),
+            (6900,),
+            (7000,),
+            (7100,),
+            (7200,),
+            (7300,),
+            (7400,)
+         ]
+        cursor.executemany('INSERT INTO retiros (cantidad_retiros) VALUES (?)',  retiros_ejemplo)
         
-        # ventas_ejemplo = [
-        #     (1, 1, 1),
-        #     (2, 2, 2),
-        #     (1, 3, 1),
-        #     (3, 1, 1),
-        #     (4, 4, 1)
-        # ]
-        # cursor.executemany('INSERT INTO ventas (usuario_id, producto_id, cantidad) VALUES (?, ?, ?)', ventas_ejemplo)
+        transaccion_ejemplo = [
+            (100,2500.00),
+            (150,3750.50),
+            (200,4200.00),
+            (250,5250.75),
+            (300,6000.00),
+            (350,7700.25),
+            (400,8200.00),
+            (450,9450.90),
+            (500,10000.00),
+            (550,11000.50),
+            (600,12100.00),
+            (650,13550.75),
+            (700,14000.00),
+            (750,15750.25),
+            (800,16000.00),
+            (850,17650.80),
+            (900,18000.00),
+            (950,19950.45),
+            (1000,20000.00),
+            (1050,22050.60),
+            (1100,23000.00),
+            (1150,24150.35),
+            (1200,25000.00),
+            (1250,27500.00),
+            (1300,28600.00)
+         ]
+        cursor.executemany('INSERT INTO transaccion (cantidad_deposito,monto_ingreso) VALUES (?, ?)', transaccion_ejemplo)
     
     conn.commit()
     conn.close()
