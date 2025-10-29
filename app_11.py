@@ -19,68 +19,123 @@ def init_db():
     
     # Crear tabla de usuarios de ejemplo
     cursor.execute('''
-        CREATE TABLE IF NOT EXISTS usuarios (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            nombre TEXT NOT NULL,
-            email TEXT UNIQUE NOT NULL,
-            edad INTEGER,
+        CREATE TABLE IF NOT EXISTS Sucursal (
+            id_Sucursal INTEGER PRIMARY KEY AUTOINCREMENT,
+            nombre_Sucursal TEXT NOT NULL,
+            direccion TEXT UNIQUE NOT NULL,
             fecha_registro DATE DEFAULT CURRENT_DATE
         )
     ''')
     
-    # Crear tabla de productos de ejemplo
+    # Crear tabla de retiros
     cursor.execute('''
-        CREATE TABLE IF NOT EXISTS productos (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            nombre TEXT NOT NULL,
-            precio REAL NOT NULL,
-            categoria TEXT,
-            stock INTEGER DEFAULT 0
+        CREATE TABLE IF NOT EXISTS retiros (
+            id_retiro INTEGER PRIMARY KEY AUTOINCREMENT,
+            cantidad_retiros INTEGER NOT NULL,
+            fecha_retiro DATE DEFAULT CURRENT_DATE
         )
     ''')
     
-    # Crear tabla de ventas de ejemplo
+    # # Crear tabla de transaccion
     cursor.execute('''
-        CREATE TABLE IF NOT EXISTS ventas (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            usuario_id INTEGER,
-            producto_id INTEGER,
-            cantidad INTEGER,
-            fecha_venta DATETIME DEFAULT CURRENT_TIMESTAMP,
-            FOREIGN KEY (usuario_id) REFERENCES usuarios (id),
-            FOREIGN KEY (producto_id) REFERENCES productos (id)
-        )
+         CREATE TABLE IF NOT EXISTS transaccion (
+             id_deposito INTEGER PRIMARY KEY AUTOINCREMENT,
+             cantidad_deposito INTEGER,
+             monto_ingreso REAL,
+             fecha_deposito DATETIME DEFAULT CURRENT_TIMESTAMP
+         )
     ''')
     
     # Insertar datos de ejemplo si no existen
-    cursor.execute('SELECT COUNT(*) FROM usuarios')
+    cursor.execute('SELECT COUNT(*) FROM Sucursal')
     if cursor.fetchone()[0] == 0:
         usuarios_ejemplo = [
-            ('Juan Pérez', 'juan@email.com', 28),
-            ('María García', 'maria@email.com', 34),
-            ('Carlos López', 'carlos@email.com', 22),
-            ('Ana Martín', 'ana@email.com', 31),
-            ('Luis Rodríguez', 'luis@email.com', 26)
+            ("Sucursal Central","Av. Principal 123"),
+            ("Sucursal Norte","Calle Secundaria 456"),
+            ("Sucursal Sur","Boulevard Tercero 789"),
+            ("Sucursal Este","Avenida Cuarto 101"),
+            ("Sucursal Oeste","Calle Quinta 202"),
+            ("Sucursal Centro","Calle Sexta 303"),
+            ("Sucursal Internacional","Avenida Séptima 404"),
+            ("Sucursal Local","Calle Octava 505"),
+            ("Sucursal Urbana","Boulevard Noveno 606"),
+            ("Sucursal Rural","Calle Décima 707"),
+            ("Sucursal Metropolitana","Avenida Once 808"),
+            ("Sucursal Provincial","Calle Doce 909"),
+            ("Sucursal Regional","Boulevard Trece 111"),
+            ("Sucursal Nacional","Avenida Catorce 222"),
+            ("Sucursal Internacional II","Calle Quince 333"),
+            ("Sucursal Local II","Boulevard Dieciséis 444"),
+            ("Sucursal Urbana II","Avenida Diecisiete 555"),
+            ("Sucursal Rural II","Calle Dieciocho 666"),
+            ("Sucursal Metropolitana II","Boulevard Diecinueve 777"),
+            ("Sucursal Provincial II","Avenida Veinte 888"),
+            ("Sucursal Regional II","Calle Veintiuno 999"),
+            ("Sucursal Nacional II","Boulevard Veintidós 121"),
+            ("Sucursal Central III","Avenida Veintitrés 232"),
+            ("Sucursal Norte III","Calle Veinticuatro 343"),
+            ("Sucursal Sur III","Boulevard Veinticinco 454")
+
         ]
-        cursor.executemany('INSERT INTO usuarios (nombre, email, edad) VALUES (?, ?, ?)', usuarios_ejemplo)
+        cursor.executemany('INSERT INTO Sucursal (nombre_Sucursal,direccion) VALUES (?, ?)', usuarios_ejemplo)
         
-        productos_ejemplo = [
-            ('Laptop', 999.99, 'Electrónicos', 15),
-            ('Mouse', 25.50, 'Accesorios', 50),
-            ('Teclado', 45.00, 'Accesorios', 30),
-            ('Monitor', 299.99, 'Electrónicos', 20),
-            ('Silla Gaming', 199.99, 'Muebles', 8)
-        ]
-        cursor.executemany('INSERT INTO productos (nombre, precio, categoria, stock) VALUES (?, ?, ?, ?)', productos_ejemplo)
+        retiros_ejemplo = [
+            (5000,),
+            (5100,),
+            (5200,),
+            (5300,),
+            (5400,),
+            (5500,),
+            (5600,),
+            (5700,),
+            (5800,),
+            (5900,),
+            (6000,),
+            (6100,),
+            (6200,),
+            (6300,),
+            (6400,),
+            (6500,),
+            (6600,),
+            (6700,),
+            (6800,),
+            (6900,),
+            (7000,),
+            (7100,),
+            (7200,),
+            (7300,),
+            (7400,)
+         ]
+        cursor.executemany('INSERT INTO retiros (cantidad_retiros) VALUES (?)',  retiros_ejemplo)
         
-        ventas_ejemplo = [
-            (1, 1, 1),
-            (2, 2, 2),
-            (1, 3, 1),
-            (3, 1, 1),
-            (4, 4, 1)
-        ]
-        cursor.executemany('INSERT INTO ventas (usuario_id, producto_id, cantidad) VALUES (?, ?, ?)', ventas_ejemplo)
+        transaccion_ejemplo = [
+            (100,2500.00),
+            (150,3750.50),
+            (200,4200.00),
+            (250,5250.75),
+            (300,6000.00),
+            (350,7700.25),
+            (400,8200.00),
+            (450,9450.90),
+            (500,10000.00),
+            (550,11000.50),
+            (600,12100.00),
+            (650,13550.75),
+            (700,14000.00),
+            (750,15750.25),
+            (800,16000.00),
+            (850,17650.80),
+            (900,18000.00),
+            (950,19950.45),
+            (1000,20000.00),
+            (1050,22050.60),
+            (1100,23000.00),
+            (1150,24150.35),
+            (1200,25000.00),
+            (1250,27500.00),
+            (1300,28600.00)
+         ]
+        cursor.executemany('INSERT INTO transaccion (cantidad_deposito,monto_ingreso) VALUES (?, ?)', transaccion_ejemplo)
     
     conn.commit()
     conn.close()
@@ -159,7 +214,7 @@ def get_examples():
     examples = [
         {
             "title": "Listar todos los usuarios",
-            "query": "SELECT * FROM usuarios;"
+            "query": "SELECT * FROM sucursal;"
         },
         {
             "title": "Productos con precio mayor a 100",
@@ -167,7 +222,7 @@ def get_examples():
         },
         {
             "title": "Contar usuarios por edad",
-            "query": "SELECT edad, COUNT(*) as cantidad FROM usuarios GROUP BY edad ORDER BY edad;"
+            "query": "SELECT edad, COUNT(*) as cantidad FROM sucursal GROUP BY edad ORDER BY edad;"
         },
         {
             "title": "Ventas con información de usuarios y productos",
